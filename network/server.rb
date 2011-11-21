@@ -2,7 +2,6 @@
 require "socket"
 require "singleton"
 require "network/network_const"
-require "gawibawibo"
 
 
 module Gawibawibo
@@ -21,6 +20,7 @@ module Gawibawibo
         
         loop do
           Thread.start(@server.accept) do |s|
+            puts self
             accept s
           end
         end
@@ -30,9 +30,10 @@ module Gawibawibo
 
       private
       def accept( socket )
-        socket.puts NetworkConst::CONNECTION_OK
+        socket.puts NetworkConst::PROTOCOL["CONNECTION_OK"]
         puts "서버 접속완료"
-        MainController::instance.create_user socket         
+
+        MainController.instance.create_connection socket
       end
         
       

@@ -6,15 +6,29 @@ module Gawibawibo
       end
 
       def listen
-        while command = @connection.socket.gets
-          puts "#{@socket.id} : #{command}"
+        puts "called receiver"
+        socket =  @connection.socket
+
+        while command = socket.gets  do
+          # puts "#{socket} : #{command}"
           params = command.split "||"
-          instruction = params.split
-
+          instruction = params.shift
           exec_command instruction, params
-
         end
       end
+
+
+      private
+      def exec_command instruction, params
+
+        unless instruction == "LOGIN"
+          main = MainController.instance
+          main.exec_command instruction, params
+        end
+
+      end
+      
+      
 
     end
   end

@@ -4,16 +4,25 @@ module Gawibawibo
       HOSTNAME = "localhost"
       PORT = 2002
       TIMEOUT = 30
-      CONNECTION_OK = "CONNECTION_OK"
-      STANDBY_OK = "STANDBY_OK"
-      PLAY_GAME_OK = "PLAY_GAME_OK"
-      REQUEST_PLAY_GAME = "REQUEST_PLAY_GAME"
-      CONNECTED_GAME = "CONNECTED_GAME"
-      START_GAME = "START_GAME"
-      DRAW = "DRAW"
-      LOSE = "LOSE"
-      WIN = "WIN"
-      RESTART_GAME = "RESTART_GAME"    
+      PROTOCOL = {
+        "CONNECTION_OK" => "CONNECTION_OK",
+        "LOGIN" => "LOGIN",
+        "LOGIN_SUCCESS" => "LOGIN_SUCCESS",
+        "LOGIN_FAILURE" => "LOGIN_FAILURE",
+        "ENTER_SQUARE" => "ENTER_SQUARE",
+        "ENTERED_SQUARE" => "ENTERED_SQUARE",
+        "REFRESHED_SQUARE" => "REFRESHED_SQUARE",
+        "REQUEST_PLAY_GAME" => "REQUEST_PLAY_GAME",
+        "REQUESTED_PLAY_GAME" => "REQUESTED_PLAY_GAME",
+        "ACCEPT_PLAY_GAME" => "ACCEPT_PLAY_GAME",
+        "START_GAME" => "START_GAME",
+        "ACTION_GAWIBAWIBO" => "ACTION_GAWIBAWIBO",
+        "GAME_RESULT" => "GAME_RESULT",
+        "GET_SQUARE_INFO" => "GET_SQUARE_INFO",
+        "GET_FAME_HALL" => "GET_FAME_HALL",
+        "RETURN_FAME_HALL" => "RETURN_FAME_HALL"
+      }
+      
     end
   end
 end

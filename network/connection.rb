@@ -26,7 +26,7 @@ module Gawibawibo
       end
 
       def signin( nickname, password )
-        #@sender.send_message "로그인중"
+        
       end
       
       def signup( nickname, password )

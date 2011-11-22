@@ -8,8 +8,17 @@ module Gawibawibo
         @connection = conn
       end
 
+      def write protocol
+        @connection.socket.puts protocol
+                
+      end
+      
+      def send_message message
+        write NetworkConst::PROTOCOL["MESSAGE"] + "||" + message
+      end
+
       def send_connection_ok
-        @connection.socket.puts NetworkConst::CONNECTION_OK
+        @connection.socket.puts NetworkConst::PROTOCOL["CONNECTION_OK"]
       end
 
       def send_login_success

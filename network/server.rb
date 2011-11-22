@@ -2,15 +2,18 @@
 require "socket"
 require "singleton"
 require "network/network_const"
+require "network/connection"
 
 
 module Gawibawibo
   module Network
-    class Server
-      
+    class Server      
       include Singleton
 
       def initialize
+        
+        @connections = []
+        
         puts "Creating server.."
         @server = TCPServer.new( NetworkConst::HOSTNAME, NetworkConst::PORT )
       end
@@ -20,8 +23,7 @@ module Gawibawibo
         
         loop do
           Thread.start(@server.accept) do |s|
-            puts self
-            accept s
+            create_connection s, self
           end
         end
 
@@ -29,11 +31,9 @@ module Gawibawibo
 
 
       private
-      def accept( socket )
-        socket.puts NetworkConst::PROTOCOL["CONNECTION_OK"]
-        puts "서버 접속완료"
-
-        MainController.instance.create_connection socket
+      def create_connection( socket, server )
+        connection = Connection.new( socket, server )
+        @connections << connection
       end
         
       

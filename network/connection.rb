@@ -1,28 +1,40 @@
+# -*- coding: utf-8 -*-
+
 require "network/socket_sender"
 require "network/socket_receiver"
+require "network/network_const"
+require "database/db_connection"
 
 module Gawibawibo
   module Network
     class Connection
 
-      attr_accessor :socket
+      attr_accessor :socket, :server, :sender, :receiver
 
-      def initialize( socket )
-        self.socket = socket
+      def initialize( socket, server )
+        @socket = socket
+        @server = server
         @sender = SocketSender.new self
         @receiver = SocketReceiver.new self
+        
+        start
       end
 
       def start
-        
         @receiver.listen
-        puts "Started connection"
+        @sender.write NetworkConst::PROTOCOL["CONNECTION_OK"]
       end
 
-      def login
+      def signin( nickname, password )
+        #@sender.send_message "로그인중"
+      end
+      
+      def signup( nickname, password )
+        db_conn = Database::DBConnection.instance
+        
         
       end
-
+      
       def close
 
       end

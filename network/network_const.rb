@@ -6,9 +6,12 @@ module Gawibawibo
       TIMEOUT = 30
       PROTOCOL = {
         "CONNECTION_OK" => "CONNECTION_OK",
-        "LOGIN" => "LOGIN",
-        "LOGIN_SUCCESS" => "LOGIN_SUCCESS",
-        "LOGIN_FAILURE" => "LOGIN_FAILURE",
+        "SIGNIN" => "SIGNIN",
+        "SIGNIN_SUCCESS" => "SIGNIN_SUCCESS",
+        "SIGNIN_FAILURE" => "SIGNIN_FAILURE",
+        "SIGNUP" => "SIGNUP",
+        "SIGNUP_SUCCESS" => "SIGNUP_SUCCESS",
+        "SIGNUP_FAILURE" => "SIGNUP_FAILURE",        
         "ENTER_SQUARE" => "ENTER_SQUARE",
         "ENTERED_SQUARE" => "ENTERED_SQUARE",
         "REFRESHED_SQUARE" => "REFRESHED_SQUARE",
@@ -20,7 +23,8 @@ module Gawibawibo
         "GAME_RESULT" => "GAME_RESULT",
         "GET_SQUARE_INFO" => "GET_SQUARE_INFO",
         "GET_FAME_HALL" => "GET_FAME_HALL",
-        "RETURN_FAME_HALL" => "RETURN_FAME_HALL"
+        "RETURN_FAME_HALL" => "RETURN_FAME_HALL",
+        "MESSAGE" => "MESSAGE"
       }
       
     end

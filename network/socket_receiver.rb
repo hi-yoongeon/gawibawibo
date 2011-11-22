@@ -1,3 +1,5 @@
+require "network/network_const"
+
 module Gawibawibo
   module Network
     class SocketReceiver
@@ -8,7 +10,9 @@ module Gawibawibo
       def listen
         puts "called receiver"
         socket =  @connection.socket
-
+        
+        puts socket
+        
         while command = socket.gets  do
           # puts "#{socket} : #{command}"
           params = command.split "||"
@@ -21,9 +25,15 @@ module Gawibawibo
       private
       def exec_command instruction, params
 
-        unless instruction == "LOGIN"
-          main = MainController.instance
-          main.exec_command instruction, params
+        puts "exec_command #{instruction}"
+         
+        if instruction === NetworkConst::PROTOCOL["SIGNIN"]
+          puts "Signin"
+          nickname, password = params[0], params[1]          
+          @connection.signin( nickname, password )
+        elsif instruction === NetworkConst::PROTOCOL["SIGNUP"]
+          nickname, password = params[0], params[1]          
+          @connection.signup( nickname, password )
         end
 
       end

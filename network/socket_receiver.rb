@@ -28,7 +28,6 @@ module Gawibawibo
         puts "exec_command #{instruction}"
          
         if instruction === NetworkConst::PROTOCOL["SIGNIN"]
-          puts "Signin"
           nickname, password = params[0], params[1]          
           @connection.signin( nickname, password )
         elsif instruction === NetworkConst::PROTOCOL["SIGNUP"]

@@ -21,9 +21,10 @@ module Gawibawibo
         "START_GAME" => "START_GAME",
         "ACTION_GAWIBAWIBO" => "ACTION_GAWIBAWIBO",
         "GAME_RESULT" => "GAME_RESULT",
-        "GET_SQUARE_INFO" => "GET_SQUARE_INFO",
+        "GET_SQUARE" => "GET_SQUARE",
+        "SQUARE_INFO" => "SQUARE_INFO",
         "GET_FAME_HALL" => "GET_FAME_HALL",
-        "RETURN_FAME_HALL" => "RETURN_FAME_HALL",
+        "FAME_HALL_INFO" => "FAME_HALL_INFO",
         "MESSAGE" => "MESSAGE"
       }
       

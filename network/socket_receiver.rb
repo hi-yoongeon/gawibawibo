@@ -3,9 +3,7 @@ require "network/network_const"
 module Gawibawibo
   module Network
     class SocketReceiver
-
       include NetworkConst
-
       def initialize conn
         @connection = conn
       end
@@ -32,6 +30,16 @@ module Gawibawibo
           exec_signup params
         elsif command === PROTOCOL["ENTER_SQUARE"]
           exec_enter_square
+        elsif command === PROTOCOL["INVITE_PLAY_GAME"]
+          exec_invite_play_game params[0]
+        elsif command === PROTOCOL["ACCEPT_PLAY_GAME"]
+          exec_accept_play_game params[0]
+        elsif command === PROTOCOL["ACTION_GAWIBAWIBO"]
+          exec_action_gawibawibo params[0]
+        elsif command === PROTOCOL["GET_MATCH_GROUND"]
+          exec_get_match_ground
+        elsif command === PROTOCOL["GET_FAME_HALL"]
+          exec_get_fame_hall
         end
 
       end
@@ -47,23 +55,23 @@ module Gawibawibo
       end
 
       def exec_enter_square
-        
+        @connection.user.game_controller.enter_square
       end
 
-      def exec_invite_play_game
-
+      def exec_invite_play_game username
+        @connection.user.game_controller.invite_play_game username
       end
 
-      def exec_accept_play_game
-
+      def exec_accept_play_game username
+        @connection.user.game_controller.accept_play_game username
       end
       
-      def exec_action_gawibawibo
-      
+      def exec_action_gawibawibo type
+        @coonection.user.game_controller.action_gawibawibo type
       end
 
       def exec_get_match_ground
-
+        
       end
 
       def exec_get_fame_hall

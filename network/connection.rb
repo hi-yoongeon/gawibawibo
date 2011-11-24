@@ -12,7 +12,6 @@ module Gawibawibo
       attr_accessor :socket, :server, :sender, :receiver
 
       def initialize( socket, server )
-        @main = Gawibawibo::MainController.instance
         @socket = socket
         @server = server
         @sender = SocketSender.new self

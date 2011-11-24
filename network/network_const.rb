@@ -4,6 +4,11 @@ module Gawibawibo
       HOSTNAME = "localhost"
       PORT = 2002
       TIMEOUT = 30
+      GAWIBAWIBO_ACTION = {
+        "GAWI" => "GAWI",
+        "BAWI" => "BAWI",
+        "BO" => "BO"
+      }
       PROTOCOL = {
         "CONNECTION_OK" => "CONNECTION_OK",
         "SIGNIN" => "SIGNIN",
@@ -22,7 +27,7 @@ module Gawibawibo
         "ACTION_GAWIBAWIBO" => "ACTION_GAWIBAWIBO",
         "GAME_RESULT" => "GAME_RESULT",
         "GET_MATCH_GROUND" => "GET_MATCH_GROUND",
-        "SQUARE_INFO" => "SQUARE_INFO",
+        "MATCH_GROUND_INFO" => "MATCH_GROUND_INFO",
         "GET_FAME_HALL" => "GET_FAME_HALL",
         "FAME_HALL_INFO" => "FAME_HALL_INFO",
         "MESSAGE" => "MESSAGE"

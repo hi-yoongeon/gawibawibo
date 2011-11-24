@@ -10,7 +10,6 @@ module Gawibawibo
 
       def write protocol
         @connection.socket.puts protocol
-                
       end
       
       def send_message message

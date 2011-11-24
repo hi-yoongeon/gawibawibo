@@ -8,7 +8,8 @@ module Gawibawibo
 
       # 대기실 들어가기
       def enter_square
-
+        
+        @user.connection.sender.send_entered_square
       end
 
       # 대기실 나오기
@@ -32,12 +33,17 @@ module Gawibawibo
       end
 
       # 게임 초대하기
-      def invite_play_game
+      def invite_play_game username
         
       end
 
       # 가위바위보 내기
-      def action_gawibawibo( type )
+      def action_gawibawibo type 
+
+      end
+
+      # 게임 수락
+      def accept_play_name username
 
       end
 

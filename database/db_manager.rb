@@ -22,21 +22,21 @@ module Gawibawibo
 
       def signin user
         row = @db_conn.query("SELECT * FROM #{TABLE_USER} WHERE username = '#{user.username}' AND password = '#{user.password}'").first
-        sql = "UPDATE #{TABLE_USER} SET signin_count = signin_count + 1 AND signin_datetime = datetime() WHERE username = '#{user.username}'"
+        sql = "UPDATE #{TABLE_USER} SET signin_count = signin_count + 1, signin_datetime = datetime() WHERE username = '#{user.username}'"
         @db_conn.query(sql) unless row.nil?
         row
       end
 
       def win_game user
-        @db_conn.query "UPDATE #{TABLE_USER} SET win_count = win_count + 1 AND match_count = match_count +1 WHERE username = '#{user.username}'"
+        @db_conn.query "UPDATE #{TABLE_USER} SET win_count = win_count + 1, match_count = match_count +1 WHERE username = '#{user.username}'"
       end
 
       def lose_game user
-        @db_conn.query "UPDATE #{TABLE_USER} SET lose_count = lose_count + 1 AND match_count = match_count +1 WHERE username = '#{user.username}'"
+        @db_conn.query "UPDATE #{TABLE_USER} SET lose_count = lose_count + 1, match_count = match_count +1 WHERE username = '#{user.username}'"
       end
 
       def draw_game user
-        @db_conn.query "UPDATE #{TABLE_USER} SET draw_count = draw_count + 1 AND match_count = match_count +1 WHERE username = '#{user.username}'"
+        @db_conn.query "UPDATE #{TABLE_USER} SET draw_count = draw_count + 1, match_count = match_count +1 WHERE username = '#{user.username}'"
       end
 
       def calculate_wining_rate user
@@ -66,11 +66,11 @@ module Gawibawibo
           "id  INTEGER  PRIMARY KEY  AUTOINCREMENT, " + 
           "username   TEXT   not null, " + 
           "password    TEXT    not null, " + 
-          "win_count   INTEGER not null, " +
-          "lose_count   INTEGER not null, " +
-          "draw_count   INTEGER not null, " + 
-          "signin_count   INTEGER not null, " + 
-          "match_count   INTEGER not null, " +
+          "win_count   NUMERIC not null, " +
+          "lose_count   NUMERIC  not null, " +
+          "draw_count   NUMERIC  not null, " + 
+          "signin_count   NUMERIC  not null, " + 
+          "match_count   NUMERIC  not null, " +
           "signin_datetime   DATETIME  null, " +
           "signup_datetime   DATETIME  not null, " +
           "wining_rate   REAL  not null "+
@@ -83,10 +83,10 @@ module Gawibawibo
         sql = "create table IF NOT EXISTS #{TABLE_MATCH_LOG}" +
           "(" +
           "id  INTEGER  PRIMARY KEY  AUTOINCREMENT, " +
-          "host_user_id   INTEGER not null, " + 
-          "guest_user_id   INTEGER not null, " +
-          "winner_user_id   INTEGER null, " + 
-          "loser_user_id   INTEGER null, " + 
+          "host_user_id   NUMERIC  not null, " + 
+          "guest_user_id   NUMERIC  not null, " +
+          "winner_user_id   NUMERIC  null, " + 
+          "loser_user_id   NUMERIC  null, " + 
           "is_draw   TEXT not null, " +
           "match_datetime   DATETIME not null"+
           ")"

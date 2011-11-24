@@ -1,6 +1,6 @@
 module Gawibawibo
   module Game
-    class GameRoom
+    class MatchGround
       
     end
   end

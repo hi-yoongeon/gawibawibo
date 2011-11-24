@@ -1,35 +1,19 @@
+require "game/controller"
+
 module Gawibawibo
   module Game
     class User
+
+      attr_accessor :model
+      attr_reader :connection, :game_controller
+
       def initialize( conn )
         @connection = conn
+        @game_controller = Controller.new self
       end
-
-      def connection_close
-        
-      end
-
-      def enter_square
-
-      end
-
-      def exit_square
-
-      end
-
-      def enter_match_room
-
-      end
-
-      def exit_match_room
-        
-      end
-
-      def action_gawibawibo
-
-      end
-
-
+      
+      
+      
     end
   end
 end

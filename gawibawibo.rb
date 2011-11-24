@@ -20,11 +20,11 @@ module Gawibawibo
     def start_server
       @server.start
     end
-    
 
-    def exec_command( instruction, params )
-      
+    def create_user
+
     end
+
     
   end
 

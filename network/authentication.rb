@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 require "database/db_manager"
-
+require "database/model/user"
 
 
 module Gawibawibo
@@ -10,11 +10,15 @@ module Gawibawibo
         @db = Database::DBManager.new
       end
       
-      def signup( user )
-        @db.signup user unless @db.exist_user? user
+      def signup( username, password )
+        user = Database::Model::User.new username, password
+        is_exist_user = @db.exist_user? user
+        @db.signup user unless is_exist_user
+        return is_exist_user
       end
 
-      def signin( user )
+      def signin( username, password )
+        user = Database::Model::User.new username, password
         @db.signin user
       end
 

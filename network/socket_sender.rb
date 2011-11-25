@@ -36,16 +36,16 @@ module Gawibawibo
         write NetworkConst::PROTOCOL["SIGNUP_FAILURE"]        
       end
 
-      def send_entered_square
-        write NetworkConst::PROTOCOL["ENTERED_SQUARE"]
+      def send_entered_square match_ground_list
+        write NetworkConst::PROTOCOL["ENTERED_SQUARE"] + "||" + match_ground_list
       end
 
-      def send_refreshed_square
-        write NetworkConst::PROTOCOL["REFRESHED_SQUARE"]
+      def send_refreshed_square match_ground_list
+        write NetworkConst::PROTOCOL["REFRESHED_SQUARE"] + "||" + match_ground_list
       end
 
-      def send_requested_play_game
-        write NetworkConst::PROTOCOL["REQUESTED_PLAY_GAME"]
+      def send_invited_play_game his_username
+        write NetworkConst::PROTOCOL["INVITED_PLAY_GAME"] + "||" + his_username
       end
 
       def send_start_game
@@ -56,12 +56,12 @@ module Gawibawibo
         write NetworkConst::PROTOCOL["GAME_RESULT"] + "||" + result
       end
 
-      def send_square_info json_data
-        write NetworkConst::PROTOCOL["SQUARE_INFO"] + "||" + json_data
+      def send_match_ground_info match_ground_list
+        write NetworkConst::PROTOCOL["MATCH_GROUND_INFO"] + "||" + match_ground_list
       end
 
-      def send_fame_hall_info json_data
-        write NetworkConst::PROTOCOL["FAME_HALL_INFO"] + "||" + json_data
+      def send_fame_hall_info fame_hall_info
+        write NetworkConst::PROTOCOL["FAME_HALL_INFO"] + "||" + fame_hall_info
       end
 
     end

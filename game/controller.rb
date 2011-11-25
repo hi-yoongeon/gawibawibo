@@ -8,8 +8,8 @@ module Gawibawibo
 
       # 대기실 들어가기
       def enter_square
-        
-        @user.connection.sender.send_entered_square
+        Square.instance.enter @user
+        @user.connection.entered_square
       end
 
       # 대기실 나오기

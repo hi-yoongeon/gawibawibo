@@ -21,8 +21,8 @@ module Gawibawibo
       @server.start
     end
 
-    def create_user
-
+    def create_user( conn )
+      Game::User.new conn
     end
 
     

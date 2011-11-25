@@ -1,4 +1,5 @@
 require "sqlite3"
+require "singleton"
 
 module Gawibawibo
   module Database
@@ -7,6 +8,7 @@ module Gawibawibo
     TABLE_MATCH_LOG = "match_logs"
 
     class DBManager
+      include Singleton
       def initialize
         @db_conn = SQLite3::Database.open DB_FILE
         @db_conn.results_as_hash = true

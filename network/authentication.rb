@@ -7,7 +7,7 @@ module Gawibawibo
   module Network
     class Authentication
       def initialize
-        @db = Database::DBManager.new
+        @db = Database::DBManager.instance
       end
       
       def signup( username, password )

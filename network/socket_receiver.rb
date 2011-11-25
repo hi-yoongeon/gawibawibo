@@ -11,11 +11,8 @@ module Gawibawibo
       def listen
         puts "called receiver"
         socket =  @connection.socket
-        
-        puts socket
-        
         while command = socket.gets  do
-          params = command.split "||"
+          params = command.chop.split "||"
           instruction = params.shift
           exec_command instruction, params
         end
@@ -23,7 +20,10 @@ module Gawibawibo
 
 
       private
-      def exec_command command, params
+      def exec_command (*args)
+        command = args[0]
+        params = args[1] if args.size > 1
+
         if command === PROTOCOL["SIGNIN"]
           exec_signin params
         elsif command === PROTOCOL["SIGNUP"]
@@ -67,11 +67,11 @@ module Gawibawibo
       end
       
       def exec_action_gawibawibo type
-        @coonection.user.game_controller.action_gawibawibo type
+        @connection.user.game_controller.action_gawibawibo type
       end
 
       def exec_get_match_ground
-        
+        @connection.get_match_ground
       end
 
       def exec_get_fame_hall

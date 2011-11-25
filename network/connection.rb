@@ -10,6 +10,7 @@ module Gawibawibo
     class Connection
 
       attr_accessor :socket, :server, :sender, :receiver
+      attr_reader :auth, :user
 
       def initialize( socket, server )
         @socket = socket
@@ -25,17 +26,15 @@ module Gawibawibo
         @sender.send_connection_ok
       end
 
-      def auth
-        @auth
-      end
-
       def signin( username, password )
         result = @auth.signin username, password
 
         if result.nil?
           @sender.send_signin_failure
         else
-          @sender.send_signin_success          
+          @user = MainController.instance.create_user self
+          @user.create_model result
+          @sender.send_signin_success
         end
       end
       
@@ -48,9 +47,23 @@ module Gawibawibo
           @sender.send_signup_success
         end
       end
+
+      def get_match_ground
+        @sender.send_match_ground_info match_ground_json_str
+      end
+
+      def entered_square
+        @sender.send_entered_square match_ground_json_str
+      end
       
       def close
 
+      end
+
+
+      private
+      def match_ground_json_str
+        Game::Square.instance.joined_user_list
       end
 
     end

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "network/network_const"
 
 module Gawibawibo
@@ -75,7 +76,7 @@ module Gawibawibo
       end
 
       def exec_get_fame_hall
-
+        @connection.get_fame_hall
       end
 
     end

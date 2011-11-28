@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "singleton"
 require "json"
 
@@ -19,6 +20,15 @@ module Gawibawibo
       def exit( user )
         @users.delete user.model.username
       end
+
+      def invite_play_game user, target_username
+        if @users.has_key? target_username
+          target_user = @users[target_username]
+          target_user.connection.invited user.model.username
+        end
+      end
+
+      
 
       def joined_user_list
         entered_square_user = []

@@ -14,12 +14,12 @@ module Gawibawibo
 
       # 대기실 나오기
       def exit_square
-
+        Square.instance.exit @user
       end
 
       # 매치 그라운드 만들기
       def create_match_ground
-
+        
       end
       
       # 매치 그라운드 입장
@@ -33,18 +33,18 @@ module Gawibawibo
       end
 
       # 게임 초대하기
-      def invite_play_game username
-        
+      def invite_play_game target_username
+        Square.instance.invite_play_game @user, target_username
       end
 
       # 가위바위보 내기
       def action_gawibawibo type 
-
+        
       end
 
       # 게임 수락
       def accept_play_name username
-
+        
       end
 
       #접속 종료

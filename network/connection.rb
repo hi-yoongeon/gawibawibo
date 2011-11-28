@@ -55,6 +55,10 @@ module Gawibawibo
       def entered_square
         @sender.send_entered_square match_ground_json_str
       end
+
+      def invited_play_game username
+        @sender.send_invited_play_game username
+      end
       
       def close
 

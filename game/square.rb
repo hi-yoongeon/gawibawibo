@@ -24,7 +24,7 @@ module Gawibawibo
       def invite_play_game user, target_username
         if @users.has_key? target_username
           target_user = @users[target_username]
-          target_user.connection.invited user.model.username
+          target_user.connection.invited_play_game user.model.username
         end
       end
 

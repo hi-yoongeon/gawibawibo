@@ -37,8 +37,8 @@ module Gawibawibo
           exec_accept_play_game params[0]
         elsif command === PROTOCOL["ACTION_GAWIBAWIBO"]
           exec_action_gawibawibo params[0]
-        elsif command === PROTOCOL["GET_MATCH_GROUND"]
-          exec_get_match_ground
+        elsif command === PROTOCOL["GET_SQUARE_INFO"]
+          exec_get_square_info
         elsif command === PROTOCOL["GET_FAME_HALL"]
           exec_get_fame_hall
         end
@@ -71,8 +71,8 @@ module Gawibawibo
         @connection.user.game_controller.action_gawibawibo type
       end
 
-      def exec_get_match_ground
-        @connection.get_match_ground
+      def exec_get_square_info
+        @connection.get_square_info
       end
 
       def exec_get_fame_hall

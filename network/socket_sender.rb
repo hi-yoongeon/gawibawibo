@@ -56,8 +56,8 @@ module Gawibawibo
         write NetworkConst::PROTOCOL["GAME_RESULT"] + "||" + result
       end
 
-      def send_match_ground_info match_ground_list
-        write NetworkConst::PROTOCOL["MATCH_GROUND_INFO"] + "||" + match_ground_list
+      def send_square_info square_info
+        write NetworkConst::PROTOCOL["SQUARE_INFO"] + "||" + square_info
       end
 
       def send_fame_hall_info fame_hall_info

@@ -48,12 +48,12 @@ module Gawibawibo
         end
       end
 
-      def get_match_ground
-        @sender.send_match_ground_info match_ground_json_str
+      def get_square_info
+        @sender.send_square_info square_info_json_str
       end
 
       def entered_square
-        @sender.send_entered_square match_ground_json_str
+        @sender.send_entered_square square_info_json_str
       end
 
       def invited_play_game username
@@ -66,7 +66,7 @@ module Gawibawibo
 
 
       private
-      def match_ground_json_str
+      def square_info_json_str
         Game::Square.instance.joined_user_list
       end
 
